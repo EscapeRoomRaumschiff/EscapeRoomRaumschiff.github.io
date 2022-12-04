@@ -63,6 +63,7 @@ input {
     position: absolute;
     bottom: 0;
     margin: 2%;
+    pointer-events: none;
 }
 
 .wtim {
@@ -76,4 +77,5 @@ input {
 
 .c {
     position: absolute;
+    pointer-events: auto; 
 }

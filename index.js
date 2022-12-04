@@ -456,7 +456,7 @@ function setWon() {
 // Start
 
 $(document).ready(function () {
-    setEngine();
+    setCockpit();
 });
 
 // Functions

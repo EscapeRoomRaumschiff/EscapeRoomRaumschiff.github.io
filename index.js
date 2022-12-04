@@ -17,10 +17,10 @@ let infoText = {
     engine: "Sucht euch nach einem Schaltpanel um.",
     engineDetail: "Ihr seid am Schaltpanel. Gebt die richtige Spannung und Stromstärke an",
     engineGang: "Das waren die richtigen Daten. Korrigiert nun die Flugbahn im Computerraum.",
-    computer: "Ihr befindet euch jetzt im Computerraum. Gebt die richtigen Koordinaten ein."
+    computer: "Ihr befindet euch jetzt im Computerraum. Gebt die richtigen Koordinaten ein. Ihr habt 3 Versuche."
 }
 
-let tippTimes = { cockpit: 2, cockpitPanel: 2, cockpitComputer: 2, cockpitDoor: 2, gangSchaukel: 2, gangGenerator: 2, gangEcke: 2, gangBottle: 2, gangBottleClose: 2, gangKiste: 2, gangEngine: 2, engine: 2, engineDetail: 2, engineGang: 2, computer: 2 }
+let tippTimes = { cockpit: 2, cockpitPanel: 2, cockpitComputer: 2, cockpitDoor: 2, gangSchaukel: 2, gangGenerator: 2, gangEcke: 2, gangBottle: 2, gangBottleClose: 2, gangKiste: 2, gangEngine: 2, engine: 2, engineDetail: 2, engineThrust: 2, engineProblem: 2, engineGang: 2, computer: 2 }
 
 let tipp = {
     cockpit: "Klickt auf den blinkenden Pfeil.",
@@ -36,9 +36,15 @@ let tipp = {
     gangEngine: "Kickt auf die blinkende Tür.",
     engine: "Klickt auf das blinkende Panel.",
     engineDetail: "Tipp hier einfügen.",
+    engineThrust: "Bewegt den Mauszeiger über den Schubhebel.",
+    engineProblem: "engine Problem Tipp.",
     engineGang: "Klick auf die blinkende Tür.",
     computer: "Tipp hier einfügen.",
 }
+
+let secondTippTime = 4;
+
+let secondTipps = { engineDetail: "zweiter Tipp" }
 
 // Variables
 
@@ -49,6 +55,7 @@ let room = "cockpit"
 let blink = "arrow";
 
 let oxygen = 14;
+let tries = 3;
 
 // Timer 
 
@@ -73,8 +80,16 @@ const timer = setInterval(() => {
 
     if (timeEntered - time > tippTimes[room]) {
         $(".tipp").fadeIn();
+
+        setTipp(tipp[room]);
     } else {
         $(".tipp").fadeOut();
+    }
+
+    if (timeEntered - time > secondTippTime) {
+        if (room in secondTipps) {
+            setTipp(secondTipps[room]);
+        }
     }
 }, 1000);
 
@@ -131,7 +146,7 @@ function setGangSchaukel() {
 
     setBlink("gangSchaukelGenerator");
 
-    // $(".bg").shake(20, 10, 10);
+    $(".bg").shake(20, 10, 10);
 }
 
 function setGangGenerator() {
@@ -164,8 +179,6 @@ function setGangBottleClose() {
     newScene("gangBottleClose");
 
     setImage("gangBottleCloseBottle", 13, 49, 18.5);
-
-    setBlink("gangBottleCloseBottle");
 
     setClick("gangBottleCloseBottle", startBottle);
 }
@@ -206,6 +219,8 @@ function setEngineDetail() {
 }
 
 function setEngineThrust() {
+    room = "engineThrust"
+
     setInfo("Es passiert....... nichts Vielleicht gehen die Ersatztriebwerke? Bewegt den Schubschalter");
 
     setImage("engineHebel", 5, 76, 86);
@@ -220,6 +235,8 @@ function setEngineThrust() {
 }
 
 function setEngineProblem() {
+    room = "engineProblem"
+
     setInfo("Das Raumschiff wackelt... Doch der Schub reicht nicht aus. Rechnet mit Hilfe des Benutzerhandbuches aus warum das nicht funktioniert hat.");
 
     setInput("EngineProblemInput", 15, 3, 58, 30, " * * ");
@@ -227,20 +244,14 @@ function setEngineProblem() {
     setChange("EngineProblemInput", checkEngineProblem);
 }
 
-// function setEngineGang() {
-//     newScene("gangEngine");
-
-//     setImage("gangEngineDoor", 8.5, 49, 0.5);
-//     setClick("gangEngineDoor", setComputer);
-
-//     setBlink("gangEngineDoor");
-// }
-
 function setComputer() {
     newScene("computer");
 
     setInput("computerInput", 14, 4, 56, 15, " * ");
-    setChange("computerInput", checkComputer);
+
+    setButton("computerButton", "Enter", 8, 8, 72, 14);
+
+    setClick("computerButton", checkComputer);
 }
 
 // Check Scenes
@@ -288,9 +299,20 @@ function checkEngineProblem(name) {
 }
 
 function checkComputer(name) {
-    if ($("." + name).val() == "6") {
+    if ($(".computerInput").val() == "6") {
         setWon();
+
+        return;
     }
+
+    tries -= 1;
+
+    if (tries == 0) {
+        setLost();
+        return;
+    }
+
+    alert("Falsche Koordinaten! Ihr habt noch " + tries + " Versuche bevor das Raumschiff abstürzt");
 }
 
 // Util
@@ -318,6 +340,12 @@ function setBG(name) {
     $(".bg").attr("src", "IMG/" + name + ".png");
 }
 
+function setTipp(content) {
+    $(".tipp").unbind();
+
+    setClick("tipp", () => { alert(content) });
+}
+
 function setInfo(info) {
     $(".info").text(info);
 }
@@ -343,6 +371,10 @@ function setText(name, content, w, h, l, t) {
     $(".elements").prepend('<p class="c ' + name + '"' + 'style=width:' + w + '%;height:' + h + '%;left:' + l + '%;top:' + t + "%;font-size:1vw>" + content + '</p>');
 }
 
+function setButton(name, content, w, h, l, t) {
+    $(".elements").prepend('<button class="c ' + name + ' glow-on-hover"' + 'style="width:' + w + '%;height:' + h + '%;left:' + l + '%;top:' + t + '%;position:absolute;padding:1%">' + content + '</button>');
+}
+
 function setInput(name, w, h, l, t, ph = " * * * * ") {
     $(".elements").prepend('<input class="' + name + '" placeholder="' + ph + '" style="width:' + w + '%;height:' + h + '%;left:' + l + '%;top:' + t + '%">');
 }
@@ -364,8 +396,9 @@ function startBottle() {
         return;
     }
 
-    setBlink("None");
     $(".gangBottleCloseBottle").fadeOut(0);
+
+    setInfo("Es sind nun " + oxygen + " bar Sauerstoff in der Flasche. Wartet bis ihr wieder Sauerstoff entlassen könnt.");
 
     if (oxygen == 1) {
         setGangKiste();
@@ -413,17 +446,17 @@ function startBottle() {
 // End
 
 function setLost() {
-    alert("You Lost!");
+    window.location.href = 'lost.html';
 }
 
 function setWon() {
-    alert("You won!");
+    window.location.href = 'end.html';
 }
 
 // Start
 
 $(document).ready(function () {
-    setCockpit();
+    setEngine();
 });
 
 // Functions

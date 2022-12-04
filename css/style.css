@@ -1,0 +1,79 @@
+/* General */
+
+body {
+    margin: 0;
+    background-color: black;
+}
+
+p {
+    margin: 0;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input {
+    position: absolute;
+}
+
+/* Media */
+
+@media screen and (min-width: 1100px) {
+    p {
+      font-size: 1.3rem;
+    }
+  }
+
+/* Other */
+
+.bg {
+    top: 0;
+    width: 100%;
+    transform-origin: 50% 50%;
+}
+
+/* Initial */
+
+.wbut button {
+    display: none;
+}
+
+/* Wrappers */
+
+.wbut {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 2%;
+  }
+
+.wimg {
+    overflow: hidden;
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.wbg {
+    z-index: -1;
+    position: relative;
+}
+
+.winf {
+    width: 40%;
+    position: absolute;
+    bottom: 0;
+    margin: 2%;
+}
+
+.wtim {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2%;
+}
+
+/* Elements */
+
+.c {
+    position: absolute;
+}

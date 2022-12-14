@@ -523,7 +523,7 @@ function setWon() {
 // Start
 
 $(document).ready(function () {
-    setGangBottleClose();
+    setCockpit();
 });
 
 // Functions

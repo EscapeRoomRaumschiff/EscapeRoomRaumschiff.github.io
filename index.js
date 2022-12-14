@@ -59,6 +59,8 @@ let blink = "arrow";
 let oxygen = 14;
 let tries = 3;
 
+let loadIndex = 0;
+
 // Timer 
 
 const timer = setInterval(() => {

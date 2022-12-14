@@ -528,6 +528,8 @@ $(document).ready(function () {
     $(".elements").append('<img class="pl" style="display:none">');
 
     $(".pl")[0].src = "IMG/cockpitPanel.png";
+    $(".pl")[0].src = "IMG/cockpitComputer.png";
+    $(".pl")[0].src = "IMG/cockpitDoor.png";
 });
 
 // Functions

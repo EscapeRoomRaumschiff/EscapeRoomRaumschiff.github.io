@@ -524,6 +524,10 @@ function setWon() {
 
 $(document).ready(function () {
     setCockpit();
+
+    $(".elements").append('<img class="pl" style="display:none">');
+
+    $(".pl")[0].src = "IMG/cockpitPanel.png";
 });
 
 // Functions

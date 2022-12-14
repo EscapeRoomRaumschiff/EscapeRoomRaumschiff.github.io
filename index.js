@@ -525,12 +525,30 @@ function setWon() {
 $(document).ready(function () {
     setCockpit();
 
-    $(".elements").append('<img class="pl" style="display:none">');
+    $('.bg').one('load', function () {
+        console.log("bg");
 
-    $(".pl")[0].src = "IMG/cockpitPanel.png";
-    $(".pl")[0].src = "IMG/cockpitComputer.png";
-    $(".pl")[0].src = "IMG/cockpitDoor.png";
+        laodAll();
+    });
+
+    $(".elements").append('<img class="pl" style="display:none">');
 });
+
+function laodAll() {
+    let names = ["cockpitPanel", "cockpitComputer", "cockpitDoor"];
+
+    $(".pl")[0].src = "IMG/" + names[loadIndex] + ".png";
+
+    $('.pl').one('load', function () {
+        console.log("nl");
+
+        loadIndex++;
+
+        if (loadIndex < names.length) {
+            laodAll();
+        }
+    });
+}
 
 // Functions
 

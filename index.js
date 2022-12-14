@@ -1,5 +1,8 @@
 // Constants
 
+let names = ["cockpit", "cockpitPanel", "cockpitPanelComputer", "cockpitComputer", "rc/b1", "rc/b2", "rc/b3", "rc/y1", "rc/y2", "rc/y3", "cockpitDoor", "cockpitDoorDoor", "enginePanel", "gangBottle", "gangBottleBottle", "gangBottleClose", "gangBottleCloseBottle", "gangEcke", "gangEngine", "gangEngineDoor", "gangKiste", "computer", "engine", "gangGenerator", "gangKisteWeg", "engineDetail", "gangSchaukel", "gangSchaukelGenerator", "engineDoor", "engineDoorDoor", "gangSchaukelWeg", "engineHebel"];
+
+
 let blinkTime = 1;
 
 let infoText = {
@@ -159,15 +162,17 @@ function setGangSchaukel() {
 function setGangGenerator() {
     newScene("gangGenerator");
 
-    setInput("gangGeneratorInputI", 5, 8, 31, 41);
-    setInput("gangGeneratorInputU", 5, 8, 37, 41);
-    setInput("gangGeneratorInputP", 5, 8, 43, 41);
-    setInput("gangGeneratorInputE", 5, 8, 49, 41);
+    setInput("gangGeneratorInputI", 10, 8, 14, 41);
+    setInput("gangGeneratorInputU", 10, 8, 30, 41);
+    setInput("gangGeneratorInputP", 10, 8, 46, 41);
+    setInput("gangGeneratorInputE", 10, 8, 62, 41);
+    setInput("gangGeneratorInputH", 10, 8, 78, 41);
 
     setChange("gangGeneratorInputI", checkGenerator);
     setChange("gangGeneratorInputU", checkGenerator);
     setChange("gangGeneratorInputP", checkGenerator);
     setChange("gangGeneratorInputE", checkGenerator);
+    setChange("gangGeneratorInputH", checkGenerator);
 }
 
 function setGangSchaukelWeg() {
@@ -329,7 +334,12 @@ function checkGenerator(name) {
         correct += 1;
     }
 
-    if (correct == 4) {
+    if ($(".gangGeneratorInputH").val() == "5") {
+        $(".gangGeneratorInputH").prop('disabled', true);
+        correct += 1;
+    }
+
+    if (correct == 5) {
         setGangSchaukelWeg();
     }
 }
@@ -537,8 +547,6 @@ $(document).ready(function () {
 });
 
 function laodAll() {
-    let names = ["cockpitPanel", "cockpitComputer", "cockpitDoor"];
-
     $(".pl")[0].src = "IMG/" + names[loadIndex] + ".png";
 
     $('.pl').one('load', function () {

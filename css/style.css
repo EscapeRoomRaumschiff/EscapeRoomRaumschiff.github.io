@@ -31,6 +31,10 @@ input {
     transform-origin: 50% 50%;
 }
 
+.pl {
+    display: none;
+}
+
 /* Initial */
 
 .wbut button {

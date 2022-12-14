@@ -462,7 +462,7 @@ function setImage(name, w, l, t) {
 // Other
 
 function startBottle() {
-    blink = "";
+    blink = "preload";
     $(".gangBottleCloseBottle").stop();
     $(".gangBottleCloseBottle").hide();
 
@@ -542,8 +542,6 @@ $(document).ready(function () {
 
         laodAll();
     });
-
-    $(".elements").append('<img class="pl" style="display:none">');
 });
 
 function laodAll() {

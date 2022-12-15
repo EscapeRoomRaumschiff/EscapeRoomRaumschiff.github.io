@@ -12,7 +12,8 @@ let infoText = {
     cockpitDoor: "Ihr habt das Benutzerhandbuch des Captains gefunden! Nun müsst ihr die kaputten Triebwerke reparieren.",
     gangSchaukel: "Was ist das? Das Raumschiff beginnt zu wackeln und der Gang, in dem ihr euch befindet, droht einzustürzen. Nach einer kurzen Zeit habt ihr auch dies überstanden und ihr begebt euch weiter auf eurer Tour durch das Labyrinth an Gängen. Doch was ist das? Der Weg ist versperrt durch eine große, bewegliche, leitende Leiterschaukel.",
     gangGenerator: "Findet den richtigen Code um weiter zu kommen.",
-    gangEcke: "Die Leiterschaukel bewegt sich und ihr könnt weiter gehen.",
+    gangSchaukelWeg: "Die Leiterschaukel bewegt sich und ihr könnt weiter gehen.",
+    gangEcke: "Ihr hört ein zischendes Geräusch.",
     gangBottle: "Oh Nein! Die Sauerstoffzufuhr im Raumschiff ist ausgefallen!",
     gangBottleClose: "Lest das Benutzerhandbuch und clickt auf die Sauerstoffflasche wenn ihr bereit seid. In der Flasche befindet sich zu Anfang 14 Bar an Sauerstoff. Ihr könnt 1 bis 3 Bar entlassen.",
     gangKiste: "Ihr habt nun wieder genug Sauerstoff zum Atmen und die Systeme sind auch wieder online. Ihr führt euren Weg fort, doch was ist das? Eine weitere Blockade versperrt euch den Weg. Dieses Mal handelt es sich um eine achtlos liegen gelasssene Kiste, die jedoch zu schwer ist, um bewegt zu werden. Gebt an wie viel Kraft ihr auf die Kiste ausüben könnt",
@@ -20,19 +21,20 @@ let infoText = {
     gangEngine: "Ihr habt überlebt! Repariert jetzt den Antrieb!",
     engine: "Sucht euch nach einem Schaltpanel um.",
     engineDetail: "Ihr seid am Schaltpanel. Gebt die richtige Spannung und Stromstärke an",
-    engineGang: "Das waren die richtigen Daten. Korrigiert nun die Flugbahn im Computerraum.",
+    engineDoor: "Das waren die richtigen Daten. Geht nun in den Computerraum um die Flugbahn zu korrigieren.",
     computer: "Ihr befindet euch jetzt im Computerraum. Gebt die richtigen Koordinaten ein. Ihr habt 3 Versuche."
 }
 
-let tippTimes = { cockpit: 2, cockpitPanel: 2, cockpitComputer: 2, cockpitDoor: 2, gangSchaukel: 2, gangGenerator: 2, gangEcke: 2, gangBottle: 2, gangBottleClose: 2, gangKiste: 2, gangKisteWeg: 2, gangEngine: 2, engine: 2, engineDetail: 2, engineThrust: 2, engineProblem: 2, engineGang: 2, computer: 2 }
+let tippTimes = { cockpit: 2, cockpitPanel: 2, cockpitComputer: 2, cockpitDoor: 2, gangSchaukel: 2, gangGenerator: 2, gangSchaukelWeg: 2, gangEcke: 2, gangBottle: 2, gangBottleClose: 2, gangKiste: 2, gangKisteWeg: 2, gangEngine: 2, engine: 2, engineDetail: 2, engineThrust: 2, engineProblem: 2, engineDoor: 2, computer: 2 }
 
 let tipp = {
     cockpit: "Klickt auf den blinkenden Pfeil.",
     cockpitPanel: "Klickt auf den blinkenden Computer.",
-    cockpitComputer: "Ihr erhaltet den Code aus den Zahlen, die ihr in die Quadrate eingefügt habt. Nachdem ihr den Code eingesetzt habt, erhaltet ihr das Benutzerhandbuch mit der Erklärung, wie und wo die Triebwerke des Raumschiffes zu finden sind.",
+    cockpitComputer: "Ihr erhaltet den Code aus den Zahlen, die ihr in die Quadrate eingefügt habt. Die Zahlen in den Quadraten stehen für die Stellen im Code. Die Farben der Stickynotes zeigen, welche von ihnen zusammengehören.",
     cockpitDoor: "Klickt auf die blinkende Tür.",
     gangSchaukel: "Klickt auf das blinkende Panel.",
     gangGenerator: "Die Abfolge heißt Fibonacci-Folge. Sie setzt sich aus Zahlen zusammen, die das Produkt der Summe der beiden vorherigen Zahlen ergibt.",
+    gangSchaukelWeg: "Klickt auf den blinkenden Pfeil.",
     gangEcke: "Klickt auf den blinkenden Pfeil.",
     gangBottle: "Klickt auf die blinkende Sauerstoffflasche.",
     gangBottleClose: "Enlasst beim ersten mal 1 Bar Sauerstoff.",
@@ -43,7 +45,7 @@ let tipp = {
     engineDetail: "Tipp hier einfügen.",
     engineThrust: "Bewegt den Mauszeiger über den Schubhebel.",
     engineProblem: "engine Problem Tipp.",
-    engineGang: "Klick auf die blinkende Tür.",
+    engineDoor: "Klick auf die blinkende Tür.",
     computer: "Tipp hier einfügen.",
 }
 
@@ -155,18 +157,22 @@ function setGangSchaukel() {
     setClick("gangSchaukelGenerator", setGangGenerator);
 
     setBlink("gangSchaukelGenerator");
-
-    $(".bg").shake(20, 10, 10);
 }
 
 function setGangGenerator() {
     newScene("gangGenerator");
 
-    setInput("gangGeneratorInputI", 10, 8, 14, 41);
-    setInput("gangGeneratorInputU", 10, 8, 30, 41);
-    setInput("gangGeneratorInputP", 10, 8, 46, 41);
-    setInput("gangGeneratorInputE", 10, 8, 62, 41);
-    setInput("gangGeneratorInputH", 10, 8, 78, 41);
+    setInput("gangGeneratorInputI", 5, 8, 14, 41);
+    setInput("gangGeneratorInputU", 5, 8, 30, 41);
+    setInput("gangGeneratorInputP", 5, 8, 46, 41);
+    setInput("gangGeneratorInputE", 5, 8, 62, 41);
+    setInput("gangGeneratorInputH", 5, 8, 78, 41);
+
+    setText("gangGeneratorTextI b", "A", 15, 8, 21, 43);
+    setText("gangGeneratorTextI b", "V", 15, 8, 37, 43);
+    setText("gangGeneratorTextI b", "W", 15, 8, 53, 43);
+    setText("gangGeneratorTextI b", "J", 15, 8, 69, 43);
+    setText("gangGeneratorTextI b", "m", 15, 8, 85, 43);
 
     setChange("gangGeneratorInputI", checkGenerator);
     setChange("gangGeneratorInputU", checkGenerator);
@@ -250,8 +256,20 @@ function setEngineDetail() {
     setInput("engineDetailVolt", 7, 3, 12, 38, "volt");
     setInput("engineDetailAmp", 7, 3, 21.5, 38, "amp");
 
+    setImage("engineHebel", 5, 68, 85.4);
+
     setChange("engineDetailVolt", checkEngine);
     setChange("engineDetailAmp", checkEngine);
+}
+
+function setEngineProblem() {
+    room = "engineProblem"
+
+    setInfo("Das Raumschiff wackelt... Doch der Schub reicht nicht aus. Rechnet mit Hilfe des Benutzerhandbuches aus warum das nicht funktioniert hat.");
+
+    setInput("EngineProblemInput", 2, 3, 75, 67, "* * ");
+
+    setChange("EngineProblemInput", checkEngineProblem);
 }
 
 function setEngineThrust() {
@@ -268,18 +286,10 @@ function setEngineThrust() {
 
         $(".engineHebel").unbind();
 
-        setEngineProblem();
+        const interval = setInterval(() => {
+            setEngineDoor();
+        }, 2000);
     });
-}
-
-function setEngineProblem() {
-    room = "engineProblem"
-
-    setInfo("Das Raumschiff wackelt... Doch der Schub reicht nicht aus. Rechnet mit Hilfe des Benutzerhandbuches aus warum das nicht funktioniert hat.");
-
-    setInput("EngineProblemInput", 15, 3, 51, 30, " * * ");
-
-    setChange("EngineProblemInput", checkEngineProblem);
 }
 
 function setEngineDoor() {
@@ -306,7 +316,7 @@ function setComputer() {
 // Check Scenes
 
 function checkCockpitComputer(name) {
-    if ($("." + name).val() == "0835") {
+    if ($("." + name).val() == "0815") {
         setCockpitDoor();
     }
 }
@@ -314,22 +324,22 @@ function checkCockpitComputer(name) {
 function checkGenerator(name) {
     let correct = 0;
 
-    if ($(".gangGeneratorInputI").val() == "1") {
+    if ($(".gangGeneratorInputI").val() == "13") {
         $(".gangGeneratorInputI").prop('disabled', true);
         correct += 1;
     }
 
-    if ($(".gangGeneratorInputU").val() == "2") {
+    if ($(".gangGeneratorInputU").val() == "144") {
         $(".gangGeneratorInputU").prop('disabled', true);
         correct += 1;
     }
 
-    if ($(".gangGeneratorInputP").val() == "3") {
+    if ($(".gangGeneratorInputP").val() == "1040") {
         $(".gangGeneratorInputP").prop('disabled', true);
         correct += 1;
     }
 
-    if ($(".gangGeneratorInputE").val() == "4") {
+    if ($(".gangGeneratorInputE").val() == "5408") {
         $(".gangGeneratorInputE").prop('disabled', true);
         correct += 1;
     }
@@ -363,14 +373,14 @@ function checkEngine(name) {
         $(".engineDetailAmp").prop('disabled', true);
 
         if (volt) {
-            setEngineThrust();
+            setEngineProblem();
         }
     }
 }
 
 function checkEngineProblem(name) {
-    if ($("." + name).val() == "10") {
-        setEngineDoor();
+    if ($("." + name).val() == "0110") {
+        setEngineThrust();
     }
 }
 
@@ -444,7 +454,7 @@ function setChange(name, call) {
 }
 
 function setText(name, content, w, h, l, t) {
-    $(".elements").prepend('<p class="c ' + name + '"' + 'style=width:' + w + '%;height:' + h + '%;left:' + l + '%;top:' + t + "%;font-size:1vw>" + content + '</p>');
+    $(".elements").prepend('<p class="c ' + name + '"' + 'style=width:' + w + '%;height:' + h + '%;left:' + l + '%;top:' + t + "%>" + content + '</p>');
 }
 
 function setButton(name, content, w, h, l, t) {
@@ -535,7 +545,7 @@ function setWon() {
 // Start
 
 $(document).ready(function () {
-    setCockpit();
+    setComputer();
 
     $('.bg').one('load', function () {
         console.log("bg");
@@ -557,20 +567,3 @@ function laodAll() {
         }
     });
 }
-
-// Functions
-
-jQuery.fn.shake = function (intShakes, intDistance, intDuration) {
-    this.each(function () {
-        $(this).css("position", "relative");
-        for (var x = 1; x <= intShakes; x++) {
-            $(this).animate({ left: (intDistance * -1) }, (((intDuration / intShakes) / 4)))
-                .animate({ left: intDistance }, ((intDuration / intShakes) / 2))
-                .animate({ left: 0 }, (((intDuration / intShakes) / 4)))
-                .animate({ top: intDistance }, ((intDuration / intShakes) / 2))
-                .animate({ top: 0 }, (((intDuration / intShakes) / 4)));
-        }
-    });
-
-    return this;
-};

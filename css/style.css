@@ -83,3 +83,7 @@ input {
     position: absolute;
     pointer-events: auto; 
 }
+
+.b {
+    color: black;
+}

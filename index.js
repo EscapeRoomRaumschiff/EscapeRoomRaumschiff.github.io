@@ -380,6 +380,7 @@ function checkEngine(name) {
 
 function checkEngineProblem(name) {
     if ($("." + name).val() == "0110") {
+        $("." + name).prop('disabled', true);
         setEngineThrust();
     }
 }
@@ -545,7 +546,7 @@ function setWon() {
 // Start
 
 $(document).ready(function () {
-    setComputer();
+    setEngineDetail();
 
     $('.bg').one('load', function () {
         console.log("bg");

@@ -16,11 +16,11 @@ let infoText = {
     gangEcke: "Ihr hört ein zischendes Geräusch.",
     gangBottle: "Oh Nein! Die Sauerstoffzufuhr im Raumschiff ist ausgefallen!",
     gangBottleClose: "Lest das Benutzerhandbuch und clickt auf die Sauerstoffflasche wenn ihr bereit seid. In der Flasche befindet sich zu Anfang 14 Bar an Sauerstoff. Ihr könnt 1 bis 3 Bar entlassen.",
-    gangKiste: "Ihr habt nun wieder genug Sauerstoff zum Atmen und die Systeme sind auch wieder online. Ihr führt euren Weg fort, doch was ist das? Eine weitere Blockade versperrt euch den Weg. Dieses Mal handelt es sich um eine achtlos liegen gelasssene Kiste, die jedoch zu schwer ist, um bewegt zu werden. Gebt an wie viel Kraft ihr auf die Kiste ausüben könnt",
-    gangKisteWeg: "Die Kiste bewegt sich aus dem Weg",
+    gangKiste: "Ihr habt nun wieder genug Sauerstoff zum Atmen und die Systeme sind auch wieder online. Ihr führt euren Weg fort, doch was ist das? Eine weitere Blockade versperrt euch den Weg. Dieses Mal handelt es sich um eine achtlos liegen gelasssene Kiste, die jedoch zu schwer ist, um bewegt zu werden. Gebt an wie viel Kraft ihr auf die Kiste ausüben könnt.",
+    gangKisteWeg: "Die Kiste bewegt sich aus dem Weg.",
     gangEngine: "Ihr habt überlebt! Repariert jetzt den Antrieb!",
     engine: "Sucht euch nach einem Schaltpanel um.",
-    engineDetail: "Ihr seid am Schaltpanel. Gebt die richtige Spannung und Stromstärke an",
+    engineDetail: "Verbinde die Treibstoffleitungen miteinander.",
     engineDoor: "Das waren die richtigen Daten. Geht nun in den Computerraum um die Flugbahn zu korrigieren.",
     computer: "Ihr befindet euch jetzt im Computerraum. Gebt die richtigen Koordinaten ein. Ihr habt 3 Versuche."
 }
@@ -38,20 +38,20 @@ let tipp = {
     gangEcke: "Klickt auf den blinkenden Pfeil.",
     gangBottle: "Klickt auf die blinkende Sauerstoffflasche.",
     gangBottleClose: "Enlasst beim ersten mal 1 Bar Sauerstoff.",
-    gangKiste: "Tipp hier einfügen.",
+    gangKiste: "Bildet die Ableitung um den Hochpunkt zu ermitteln.",
     gangEngine: "Kickt auf die blinkende Tür.",
     gangKisteWeg: "Klickt auf den blinkenden Pfeil.",
     engine: "Klickt auf das blinkende Panel.",
-    engineDetail: "Tipp hier einfügen.",
+    engineDetail: "Stellt den Vektor zwischen den beiden Leitungsenden auf und berechnet dessen Betrag, um den Abstand der Enden herauszufinden.",
     engineThrust: "Bewegt den Mauszeiger über den Schubhebel.",
     engineProblem: "engine Problem Tipp.",
     engineDoor: "Klick auf die blinkende Tür.",
-    computer: "Tipp hier einfügen.",
+    computer: "Setze die Koordinaten ein.",
 }
 
 let secondTippTime = 4;
 
-let secondTipps = { engineDetail: "zweiter Tipp" }
+let secondTipps = {}//engineDetail: "zweiter Tipp" }
 
 // Variables
 

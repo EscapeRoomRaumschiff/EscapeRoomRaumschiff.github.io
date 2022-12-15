@@ -133,7 +133,7 @@ function setCockpitComputer() {
     setImage("rc/b3", 6, 36, 46);
     setImage("rc/y3", 6, 44, 46);
 
-    setInput("cockpitComputerInput", 10, 3, 33, 16);
+    setInput("cockpitComputerInput", 10, 3, 33, 21);
     setText("cockpitComputerText", "Enter Password", 10, 3, 33, 13);
 
     setChange("cockpitComputerInput", checkCockpitComputer);

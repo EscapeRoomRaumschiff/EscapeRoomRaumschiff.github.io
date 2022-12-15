@@ -288,6 +288,8 @@ function setEngineThrust() {
 
         const interval = setInterval(() => {
             setEngineDoor();
+
+            clearInterval(interval);
         }, 2000);
     });
 }
@@ -546,7 +548,7 @@ function setWon() {
 // Start
 
 $(document).ready(function () {
-    setEngineDetail();
+    setCockpit();
 
     $('.bg').one('load', function () {
         console.log("bg");

@@ -9,19 +9,19 @@ let infoText = {
     cockpit: "Ihr befindet euch im Cockpit von Ikarus. Schaut euch um und findet das Benutzerhandbuch.",
     cockpitPanel: "Das Benutzerhandbuch, welches ihr braucht, um das Raumschiff richtig zu betätigen, ist auf dem Computer des Captain gespeichert. Dieser hat nur leider bereits mit der einzig übrigen Rettungskapsel die Flucht ergriffen. Zum Glück hat der Captain sein Passwort mit Stickynotes, die an seinem Bildschirm kleben, vermerkt.",
     cockpitComputer: "Das Benutzerhandbuch, welches ihr braucht, um das Raumschiff richtig zu betätigen, ist auf dem Computer des Captain gespeichert. Dieser hat nur leider bereits mit der einzig übrigen Rettungskapsel die Flucht ergriffen. Zum Glück hat der Captain sein Passwort mit Stickynotes, die an seinem Bildschirm kleben, vermerkt.",
-    cockpitDoor: "Ihr habt das Benutzerhandbuch des Captains gefunden! Nun müsst ihr die kaputten Triebwerke reparieren.",
-    gangSchaukel: "Was ist das? Das Raumschiff beginnt zu wackeln und der Gang, in dem ihr euch befindet, droht einzustürzen. Nach einer kurzen Zeit habt ihr auch dies überstanden und ihr begebt euch weiter auf eurer Tour durch das Labyrinth an Gängen. Doch was ist das? Der Weg ist versperrt durch eine große, bewegliche, leitende Leiterschaukel.",
-    gangGenerator: "Findet den richtigen Code um weiter zu kommen.",
+    cockpitDoor: "Ihr habt das Benutzerhandbuch des Captains gefunden! Nun müsst ihr die kaputten Triebwerke reparieren. Schaut ins Benutzerhandbuch, wenn ihr nicht weiter wisst. Dort gibt es Anweisungen für so gut wie alle Szenarien.",
+    gangSchaukel: "Was ist das? Das Raumschiff beginnt zu wackeln und der Gang, in dem ihr euch befindet, droht einzustürzen. Nach einer kurzen Zeit habt ihr auch dies überstanden und ihr begebt euch weiter auf eurer Tour durch das Labyrinth an Gängen. Doch was ist das? Der Weg ist versperrt durch eine große, bewegliche, leitende Leiterschaukel. An der Wand findet ihr ein Panel zur Bedienung des Generators.",
+    gangGenerator: "Findet die richtigen Größen, um die Leiterschaukel aus dem Weg zu bekommen. Dabei kann euch das Benutzerhandbuch weiter helfen.",
     gangSchaukelWeg: "Die Leiterschaukel bewegt sich und ihr könnt weiter gehen.",
     gangEcke: "Ihr hört ein zischendes Geräusch.",
-    gangBottle: "Oh Nein! Die Sauerstoffzufuhr im Raumschiff ist ausgefallen!",
-    gangBottleClose: "Lest das Benutzerhandbuch und clickt auf die Sauerstoffflasche wenn ihr bereit seid. In der Flasche befindet sich zu Anfang 14 Bar an Sauerstoff. Ihr könnt 1 bis 3 Bar entlassen.",
-    gangKiste: "Ihr habt nun wieder genug Sauerstoff zum Atmen und die Systeme sind auch wieder online. Ihr führt euren Weg fort, doch was ist das? Eine weitere Blockade versperrt euch den Weg. Dieses Mal handelt es sich um eine achtlos liegen gelasssene Kiste, die jedoch zu schwer ist, um bewegt zu werden. Gebt an wie viel Kraft ihr auf die Kiste ausüben könnt.",
+    gangBottle: "Oh Nein! Die Sauerstoffzufuhr im Raumschiff ist ausgefallen! Zum Glück findet ihr eine Sauerstofflasche im Gang.",
+    gangBottleClose: "Die Flasche kann euch helfen nicht zu ersticken. Schaut ins Benutzerhandbuch um sie richtig zu bedienen. In der Flasche befindet sich zu Anfang 14 Bar an Sauerstoff. Ihr könnt 1 bis 3 Bar entlassen.",
+    gangKiste: "Ihr habt nun wieder genug Sauerstoff zum Atmen und die Systeme sind auch wieder online. Ihr führt euren Weg fort, doch was ist das? Eine weitere Blockade versperrt euch den Weg. Dieses Mal handelt es sich um eine achtlos liegen gelasssene Kiste, die jedoch zu schwer ist, um bewegt zu werden. Zum Glück hängt diese an einem Kran und ihr habt noch euer Sauerstofflasche. Rechnet mit Hilfe des Benutzerhandbuchs die Kraft aus, die ihr maximal auf die Kiste ausüben könnt. Rundet dazu auf ganze Zahlen",
     gangKisteWeg: "Die Kiste bewegt sich aus dem Weg.",
-    gangEngine: "Ihr habt überlebt! Repariert jetzt den Antrieb!",
-    engine: "Sucht euch nach einem Schaltpanel um.",
-    engineDetail: "Verbinde die Treibstoffleitungen miteinander.",
-    engineDoor: "Das waren die richtigen Daten. Geht nun in den Computerraum um die Flugbahn zu korrigieren.",
+    gangEngine: "Geht jetzt weiter um den Antrieb zu reparieren!",
+    engine: "Sucht euch nach einem Schaltpanel um, mit dem die Triebwerke bedient werden können.",
+    engineDetail: "Verbinde die Treibstoffleitungen miteinander, indem ihr die richtige Spannung und Stromstärke findet. Schaut dazu ins Benutzerhandbuch",
+    engineDoor: "Geht nun in den Computerraum um die Flugbahn zur Erde zu korrigieren.",
     computer: "Ihr befindet euch jetzt im Computerraum. Gebt die richtigen Koordinaten ein. Ihr habt 3 Versuche."
 }
 
@@ -38,7 +38,7 @@ let tipp = {
     gangEcke: "Klickt auf den blinkenden Pfeil.",
     gangBottle: "Klickt auf die blinkende Sauerstoffflasche.",
     gangBottleClose: "Enlasst beim ersten mal 1 Bar Sauerstoff.",
-    gangKiste: "Bildet die Ableitung um den Hochpunkt zu ermitteln.",
+    gangKiste: "Die Funktion für die Kraft lautet f(t) = 50 * (t^2+t+5) / (t^2+5) + 140. Findet den Wert an ihrem Hochpunkt mit Hilfe der Ableitung.",
     gangEngine: "Kickt auf die blinkende Tür.",
     gangKisteWeg: "Klickt auf den blinkenden Pfeil.",
     engine: "Klickt auf das blinkende Panel.",
@@ -162,11 +162,11 @@ function setGangSchaukel() {
 function setGangGenerator() {
     newScene("gangGenerator");
 
-    setInput("gangGeneratorInputI", 5, 8, 14, 41);
-    setInput("gangGeneratorInputU", 5, 8, 30, 41);
-    setInput("gangGeneratorInputP", 5, 8, 46, 41);
-    setInput("gangGeneratorInputE", 5, 8, 62, 41);
-    setInput("gangGeneratorInputH", 5, 8, 78, 41);
+    setInput("gangGeneratorInputI", 5, 8, 14, 41, " * * ");
+    setInput("gangGeneratorInputU", 5, 8, 30, 41, " * * * ");
+    setInput("gangGeneratorInputP", 5, 8, 46, 41, " * * * * ");
+    setInput("gangGeneratorInputE", 5, 8, 62, 41, " * * * * ");
+    setInput("gangGeneratorInputH", 5, 8, 78, 41, " * ");
 
     setText("gangGeneratorTextI b", "A", 15, 8, 21, 43);
     setText("gangGeneratorTextI b", "V", 15, 8, 37, 43);
@@ -186,6 +186,8 @@ function setGangSchaukelWeg() {
 
     setImage("arrow", 7, 45, 60);
     setClick("arrow", setGangEcke);
+
+    setBlink("arrow");
 }
 
 function setGangEcke() {
@@ -265,9 +267,9 @@ function setEngineDetail() {
 function setEngineProblem() {
     room = "engineProblem"
 
-    setInfo("Das Raumschiff wackelt... Doch der Schub reicht nicht aus. Rechnet mit Hilfe des Benutzerhandbuches aus warum das nicht funktioniert hat.");
+    setInfo("Das Raumschiff wackelt... Doch der Schub reicht nicht aus. Zum Glück hat das Raumschiff Ersatztriebwerke. Diese sind allerdings mit einem Code gesichter. Findet diesen mit Hilfe des Benutzerhandbuches heraus und gebt ihn ein.");
 
-    setInput("EngineProblemInput", 2, 3, 75, 67, "* * ");
+    setInput("EngineProblemInput", 2, 3, 75, 67, "****");
 
     setChange("EngineProblemInput", checkEngineProblem);
 }
@@ -275,7 +277,7 @@ function setEngineProblem() {
 function setEngineThrust() {
     room = "engineThrust"
 
-    setInfo("Es passiert....... nichts Vielleicht gehen die Ersatztriebwerke? Bewegt den Schubschalter");
+    setInfo("Es passiert....... nichts. Bewegt den Schubschalter um die Triebwerke zu aktivieren.");
 
     setImage("engineHebel", 5, 68, 85.4);
 
@@ -475,15 +477,18 @@ function setImage(name, w, l, t) {
 // Other
 
 function startBottle() {
+    let amount = prompt("Gebt ein wie viel Bar Sauerstoff ihr entlassen wollt");
+
     blink = "preload";
     $(".gangBottleCloseBottle").stop();
     $(".gangBottleCloseBottle").hide();
 
-    let amount = prompt("Gebt ein wie viel Bar Sauerstoff ihr entlassen wollt");
-
     if (0 < amount && amount <= 3) {
         oxygen -= amount;
     } else {
+        $(".gangBottleCloseBottle").fadeIn(0);
+        blink = "gangBottleCloseBottle";
+
         setClick("gangBottleCloseBottle", startBottle);
 
         return;
@@ -525,7 +530,7 @@ function startBottle() {
 
         oxygen -= free;
 
-        setInfo("Die Sauerstofflasche ist undicht und es ist  Es sind " + free + " bar entwichen. Es befinden sich nun noch " + oxygen + " bar in der Flasche. Ihr seid nun wieder dran. Entlasst von 1 bis 3 bar");
+        setInfo("Die Sauerstofflasche ist undicht und es sind " + free + " bar entwichen. Es befinden sich nun noch " + oxygen + " bar in der Flasche. Ihr seid nun wieder dran. Entlasst von 1 bis 3 bar");
 
         clearInterval(leakDelay);
 

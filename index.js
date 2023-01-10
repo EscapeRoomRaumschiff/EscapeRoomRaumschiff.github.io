@@ -33,7 +33,7 @@ let tipp = {
     cockpitComputer: "Ihr erhaltet den Code aus den Zahlen, die ihr in die Quadrate eingefügt habt. Die Zahlen in den Quadraten stehen für die Stellen im Code. Die Farben der Stickynotes zeigen, welche von ihnen zusammengehören.",
     cockpitDoor: "Klickt auf die blinkende Tür.",
     gangSchaukel: "Klickt auf das blinkende Panel.",
-    gangGenerator: "Die Abfolge heißt Fibonacci-Folge. Sie setzt sich aus Zahlen zusammen, die das Produkt der Summe der beiden vorherigen Zahlen ergibt.",
+    gangGenerator: "Verfollständigt die Fibonacci-Folge um U und I zu erhalten. Sie setzt sich aus Zahlen zusammen, die das Produkt der Summe der beiden vorherigen Zahlen ergibt.",
     gangSchaukelWeg: "Klickt auf den blinkenden Pfeil.",
     gangEcke: "Klickt auf den blinkenden Pfeil.",
     gangBottle: "Klickt auf die blinkende Sauerstoffflasche.",
@@ -348,7 +348,7 @@ function checkGenerator(name) {
         correct += 1;
     }
 
-    if ($(".gangGeneratorInputH").val() == "5") {
+    if ($(".gangGeneratorInputH").val() == "6") {
         $(".gangGeneratorInputH").prop('disabled', true);
         correct += 1;
     }
